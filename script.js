@@ -12,8 +12,200 @@ if (typeof window.ethereum !== 'undefined') {
 }
 
 // ABI and address of your deployed smart contract
-const contractABI = [/* Paste your contract ABI here */];
-const contractAddress = '0x...'; // Replace with your contract's address
+const contractABI = [
+                     	{
+                     		"anonymous": false,
+                     		"inputs": [
+                     			{
+                     				"indexed": true,
+                     				"internalType": "address",
+                     				"name": "_owner",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"indexed": true,
+                     				"internalType": "address",
+                     				"name": "_spender",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"indexed": false,
+                     				"internalType": "uint256",
+                     				"name": "_value",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "Approval",
+                     		"type": "event"
+                     	},
+                     	{
+                     		"anonymous": false,
+                     		"inputs": [
+                     			{
+                     				"indexed": true,
+                     				"internalType": "address",
+                     				"name": "_from",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"indexed": false,
+                     				"internalType": "uint256",
+                     				"name": "_value",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "Deposit",
+                     		"type": "event"
+                     	},
+                     	{
+                     		"anonymous": false,
+                     		"inputs": [
+                     			{
+                     				"indexed": true,
+                     				"internalType": "address",
+                     				"name": "_from",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"indexed": true,
+                     				"internalType": "address",
+                     				"name": "_to",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"indexed": false,
+                     				"internalType": "uint256",
+                     				"name": "_value",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "Transfer",
+                     		"type": "event"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "address",
+                     				"name": "",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"internalType": "address",
+                     				"name": "",
+                     				"type": "address"
+                     			}
+                     		],
+                     		"name": "allowed",
+                     		"outputs": [
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"stateMutability": "view",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "address",
+                     				"name": "_spender",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "_amount",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "approve",
+                     		"outputs": [],
+                     		"stateMutability": "nonpayable",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "address",
+                     				"name": "",
+                     				"type": "address"
+                     			}
+                     		],
+                     		"name": "balances",
+                     		"outputs": [
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"stateMutability": "view",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [],
+                     		"name": "deposit",
+                     		"outputs": [],
+                     		"stateMutability": "payable",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "address",
+                     				"name": "_to",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "_amount",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "transfer",
+                     		"outputs": [],
+                     		"stateMutability": "nonpayable",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "address",
+                     				"name": "_from",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"internalType": "address",
+                     				"name": "_to",
+                     				"type": "address"
+                     			},
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "_amount",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "transferFrom",
+                     		"outputs": [],
+                     		"stateMutability": "nonpayable",
+                     		"type": "function"
+                     	},
+                     	{
+                     		"inputs": [
+                     			{
+                     				"internalType": "uint256",
+                     				"name": "_amount",
+                     				"type": "uint256"
+                     			}
+                     		],
+                     		"name": "withdraw",
+                     		"outputs": [],
+                     		"stateMutability": "nonpayable",
+                     		"type": "function"
+                     	}
+                     ];
+const contractAddress = '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4'; // Replace with your contract's address
 
 // Instantiate the contract
 const simpleWalletContract = new web3.eth.Contract(contractABI, contractAddress);
