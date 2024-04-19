@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Ethereum Wallet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Basic Ethereum Wallet</h1>
+    <div id="wallet-container">
+        <h2>Balance: <span id="balance"></span> ETH</h2>
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+        <button onclick="send()">Send</button>
+        <h2>Transaction History</h2>
+        <ul id="transaction-history"></ul>
+        <h2>Address Book</h2>
+        <input type="text" id="new-address" placeholder="Enter address">
+        <button onclick="addToAddressBook()">Add</button>
+        <ul id="address-book"></ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.2/web3.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
